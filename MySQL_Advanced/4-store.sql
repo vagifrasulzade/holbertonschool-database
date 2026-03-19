@@ -1,7 +1,11 @@
 -- Create a table named `items` with the following columns:
-CREATE TRIGGER decrease_quantity
+DELIMITER $$
+CREATE TRIGGER after_adding_items
 AFTER INSERT ON orders
 FOR EACH ROW
-UPDATE items
-SET quantity = quantity - NEW.number
-WHERE name = NEW.item_name;
+BEGIN
+    UPDATE items
+    SET quantity = quantity - NEW.number
+    WHERE name = NEW.item_name;
+END$$
+DELIMITER ;
