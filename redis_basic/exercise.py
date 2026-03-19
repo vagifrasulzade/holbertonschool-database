@@ -2,7 +2,6 @@
 """Basic Redis cache module."""
 
 import uuid
-import redis
 from typing import Union
 
 
@@ -11,6 +10,8 @@ class Cache:
 
     def __init__(self):
         """Initialize the Cache instance."""
+        import redis
+
         self._redis = redis.Redis()
         self._redis.flushdb()
 
