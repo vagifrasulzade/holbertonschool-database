@@ -8,7 +8,7 @@ from typing import Union
 class Cache:
     """Cache class for storing data in Redis."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize the Cache instance."""
         import redis
 
