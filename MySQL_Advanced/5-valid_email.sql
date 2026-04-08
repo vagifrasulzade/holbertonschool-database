@@ -1,11 +1,11 @@
--- Create a table named `users` with the following columns:
+-- Trigger that resets the attribute valid_email only when the email has been changed.
 DELIMITER $$
-CREATE TRIGGER reset_valid_email_update
-BEFORE UPDATE ON users
+CREATE TRIGGER update_valid_email_status BEFORE UPDATE ON users
 FOR EACH ROW
 BEGIN
-	IF OLD.email <> NEW.email THEN
-	SET NEW.valid_email = 0;
+IF NEW.email <> OLD.email
+THEN SET NEW.valid_email = 0;
 END IF;
 END $$
-DELIMITER ;
+
+DELIMITER;

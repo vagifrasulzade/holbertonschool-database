@@ -1,7 +1,10 @@
--- Create a table named `users` with the following columns:
+-- Create a users table with country field
+-- if the table doesn't exists
 CREATE TABLE IF NOT EXISTS users (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    name VARCHAR(255),
-    country Enum('US', 'CO', 'TN') NOT NULL DEFAULT 'US'
-);
+    id INT NOT NULL AUTO_INCREMENT,
+    email VARCHAR(256) NOT NULL,
+    name VARCHAR(256),
+    country ENUM('US','CO','TN') NOT NULL DEFAULT 'US',
+    PRIMARY KEY (id),
+    UNIQUE (email)
+) ENGINE=InnoDB;
